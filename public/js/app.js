@@ -50691,15 +50691,14 @@ module.exports = function(module) {
 /*!********************************!*\
   !*** ./resources/js/Board.vue ***!
   \********************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Board_vue_vue_type_template_id_36375f90_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Board.vue?vue&type=template&id=36375f90&scoped=true& */ "./resources/js/Board.vue?vue&type=template&id=36375f90&scoped=true&");
 /* harmony import */ var _Board_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Board.vue?vue&type=script&lang=js& */ "./resources/js/Board.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Board_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Board_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _Board_vue_vue_type_style_index_0_id_36375f90_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Board.vue?vue&type=style&index=0&id=36375f90&scoped=true&lang=css& */ "./resources/js/Board.vue?vue&type=style&index=0&id=36375f90&scoped=true&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Board_vue_vue_type_style_index_0_id_36375f90_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Board.vue?vue&type=style&index=0&id=36375f90&scoped=true&lang=css& */ "./resources/js/Board.vue?vue&type=style&index=0&id=36375f90&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -50731,7 +50730,7 @@ component.options.__file = "resources/js/Board.vue"
 /*!*********************************************************!*\
   !*** ./resources/js/Board.vue?vue&type=script&lang=js& ***!
   \*********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
