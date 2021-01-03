@@ -1,10 +1,14 @@
 <template>
-    <div class="bg-white card rounded-sm p-2 cursor-pointer text_sm hover:bg-gray-300 mb-2 mr-2 ml-2">xxx</div>
+    <div class="bg-white card rounded-sm p-2 cursor-pointer text_sm hover:bg-gray-300 mb-2 mr-2 ml-2">
+        {{ card.title }}
+    </div>
 </template>
 
 <script>
 export default {
-    name: "Card"
+    props: {
+        card: Object
+    }
 }
 </script>
 

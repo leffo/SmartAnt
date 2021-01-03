@@ -5,7 +5,7 @@ import VueApollo from 'vue-apollo';
 Vue.use(VueApollo);
 
 const apolloClient = new ApolloClient({
-   uri: 'http://smartant,lara/graphql'
+   uri: 'http://smartant.lara/graphql'
 });
 
 export default new VueApollo({
