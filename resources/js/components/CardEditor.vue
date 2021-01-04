@@ -27,6 +27,7 @@
 <script>
 import CardAdd from "./../graphql/CardAdd.gql";
 import BoardQuery from "./../graphql/BoardWithListsAndCards.gql"
+import {EVENT_CARD_ADDED} from "../constants";
 
 export default {
     props: {
@@ -51,19 +52,10 @@ export default {
                     order: this.list.cards.length + 1
                 },
                 update(store, {data: {cardAdd}}) {
-                    const data = store.readQuery({
-                        query: BoardQuery,
-                        variables: { id: Number(self.list.board_id) }
-                    });
-
-                    data.board.lists.
-                        find(list => list.id == self.list.id).
-                        cards.push(cardAdd);
-
-                    store.writeQuery({ query: BoardQuery, data});
+                    self.$emit("added", {store, data: cardAdd, type: EVENT_CARD_ADDED});
+                    self.closed();
                 }
             });
-            this.closed();
         },
         closed() {
             this.$emit('closed');

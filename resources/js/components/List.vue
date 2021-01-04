@@ -4,10 +4,20 @@
             <div class="text-gray-800 pl-2 pb-2 font-bold">{{ list.title }}</div>
         </div>
 
-        <Card v-for="card in list.cards" :key="card.id" :card="card"></Card>
+        <Card
+            v-for="card in list.cards"
+            :key="card.id"
+            :card="card"
+            @deleted="$emit('card-deleted', {...$event, listId: list.id})"
+        ></Card>
 
-        <CardEditor v-if="editing" @closed="editing=false" :list="list"></CardEditor>
-        <CardAddButton v-else @click="editing=true"> </CardAddButton>
+        <CardEditor
+            v-if="editing"
+            @closed="editing=false"
+            :list="list"
+            @added="$emit('card-added', {...$event, listId: list.id})"
+        ></CardEditor>
+        <CardAddButton v-else @click="editing=true"></CardAddButton>
     </div>
 </template>
 
