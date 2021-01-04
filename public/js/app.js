@@ -5716,30 +5716,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     addCard: function addCard() {
-      this.$apollo.mutate({
-        mutation: _graphql_CardAdd_gql__WEBPACK_IMPORTED_MODULE_0___default.a,
-        variables: {
-          title: 'Added through mutation',
-          listId: 1,
-          order: 1
-        },
-        update: function update(store, _ref) {
-          var cardAdd = _ref.data.cardAdd;
-          var data = store.readQuery({
-            query: _graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_1___default.a,
-            variables: {
-              id: 1
-            }
-          });
-          data.board.lists.find(function (list) {
-            return list.id = 1;
-          }).cards.push(cardAdd);
-          store.writeQuery({
-            query: _graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_1___default.a,
-            data: data
-          });
-        }
-      });
+      this.$emit('click'); //     this.$apollo.mutate({
+      //        mutation: CardAdd,
+      //         variables: {
+      //             title: 'Added through mutation',
+      //             listId: 1,
+      //             order: 1
+      //         },
+      //         update(store, {data: {cardAdd}}) {
+      //            const data = store.readQuery({
+      //                query: BoardQuery,
+      //                variables: { id: 1 }
+      //            });
+      //
+      //            data.board.lists.find(list => list.id = 1).cards.push(cardAdd);
+      //
+      //            store.writeQuery({ query: BoardQuery, data});
     }
   }
 });
@@ -5765,11 +5757,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       title: null
     };
+  },
+  mounted: function mounted() {
+    this.$refs.card.focus();
   }
 });
 
@@ -5811,6 +5809,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     list: Object
+  },
+  data: function data() {
+    return {
+      editing: false
+    };
   }
 });
 
@@ -31671,7 +31674,11 @@ var render = function() {
     {
       staticClass:
         "rounded-sm p-2 text-gray-600 cursor-pointer hover:bg-gray-400 hover:text-gray-800 text-sm mb-2 mr-2 ml-2 ",
-      on: { click: _vm.addCard }
+      on: {
+        click: function($event) {
+          return _vm.$emit("click")
+        }
+      }
     },
     [_vm._v("Add new card")]
   )
@@ -31708,11 +31715,32 @@ var render = function() {
           expression: "title"
         }
       ],
+      ref: "card",
       staticClass:
         "rounded-md shadow-card py-1 px-2 outline-none w-11/12 text-gray-900 text-sm bg-white h-16 resize-none ml-2 mr-2",
       attrs: { placeholder: "Enter a title for this card..." },
       domProps: { value: _vm.title },
       on: {
+        keyup: [
+          function($event) {
+            if (
+              !$event.type.indexOf("key") &&
+              _vm._k($event.keyCode, "esc", 27, $event.key, ["Esc", "Escape"])
+            ) {
+              return null
+            }
+            return _vm.$emit("closed")
+          },
+          function($event) {
+            if (
+              !$event.type.indexOf("key") &&
+              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+            ) {
+              return null
+            }
+            return _vm.$emit("closed")
+          }
+        ],
         input: function($event) {
           if ($event.target.composing) {
             return
@@ -31759,9 +31787,21 @@ var render = function() {
         return _c("Card", { key: card.id, attrs: { card: card } })
       }),
       _vm._v(" "),
-      _c("CardEditor"),
-      _vm._v(" "),
-      _c("CardAddButton")
+      _vm.editing
+        ? _c("CardEditor", {
+            on: {
+              closed: function($event) {
+                _vm.editing = false
+              }
+            }
+          })
+        : _c("CardAddButton", {
+            on: {
+              click: function($event) {
+                _vm.editing = true
+              }
+            }
+          })
     ],
     2
   )
