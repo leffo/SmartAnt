@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+// In here...
+Route::fallback(function () {
     return view('app');
 });
