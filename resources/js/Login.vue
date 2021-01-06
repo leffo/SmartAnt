@@ -6,10 +6,7 @@
             </div>
 
             <div class="w-full sm:shadow-xl sm:bg-white sm:py-8 sm:px-12">
-                <div v-if="errors.length"
-                     class="p-2 bg-red-600 text-gray-100 rounded-sm mb-6 text-sm text-center">
-                     <div v-for="(error, index) in errors" :key="index">{{ error.message }}</div>
-                </div>
+                <Errors :errors="errors"></Errors>
 
                 <div class="w-full text-center text-gray-600 font-bold mb-8 ">Log in to SmartAnt</div>
 
@@ -55,8 +52,11 @@
 <script>
 import Login from "./graphql/Login.gql"
 import {gqlErrors} from "./utils"
+import Errors from "./components/Errors";
 
 export default {
+    components: { Errors },
+
     data() {
         return {
             email: null,
