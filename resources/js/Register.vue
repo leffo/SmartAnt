@@ -8,11 +8,12 @@
             <div class="w-full sm:shadow-xl sm:bg-white sm:py-8 sm:px-12">
                 <div class="w-full text-center text-gray-600 font-bold mb-8 ">Signup to your account</div>
 
-                <form>
+                <form @submit.prevent="register">
                     <div class="w-full mb-4">
                         <input type="text"
                                class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-solid border-2 w-full text-sm"
                                placeholder="Enter e-mail"
+                               v-model="email"
                         />
                     </div>
 
@@ -20,6 +21,7 @@
                         <input type="text"
                                class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-solid border-2 w-full text-sm"
                                placeholder="Enter full name"
+                               v-model="name"
                         />
                     </div>
 
@@ -27,6 +29,7 @@
                         <input type="password"
                                class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-solid border-2 w-full text-sm"
                                placeholder="Enter password"
+                               v-model="password"
                         />
                     </div>
 
@@ -53,8 +56,38 @@
 </template>
 
 <script>
+import Register from "./graphql/Register.gql";
+import { gqlErrors } from "./utils";
+
 export default {
-    name: "Register"
+    data() {
+        return  {
+            email: null,
+            password: null,
+            name: null,
+            errors: []
+        };
+    },
+    methods: {
+        async register() {
+            this.errors = [];
+
+            try {
+                await this.$apollo.mutate({
+                    mutation: Register,
+                    variables: {
+                        email: this.email,
+                        password: this.password,
+                        name: this.name
+                    }
+                });
+            } catch (err) {
+                this.errors = gqlErrors(err);
+            }
+
+            this.$router.push({ name: "board" });
+        }
+    }
 }
 </script>
 
