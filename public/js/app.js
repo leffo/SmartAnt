@@ -5742,6 +5742,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _graphql_Login_gql__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./graphql/Login.gql */ "./resources/js/graphql/Login.gql");
 /* harmony import */ var _graphql_Login_gql__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_graphql_Login_gql__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ "./resources/js/utils.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5797,12 +5798,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       email: null,
-      password: null
+      password: null,
+      errors: []
     };
   },
   methods: {
@@ -5814,8 +5822,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.prev = 0;
-                _context.next = 3;
+                _this.errors = [];
+                _context.prev = 1;
+                _context.next = 4;
                 return _this.$apollo.mutate({
                   mutation: _graphql_Login_gql__WEBPACK_IMPORTED_MODULE_1___default.a,
                   variables: {
@@ -5824,24 +5833,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 });
 
-              case 3:
-                _context.next = 8;
+              case 4:
+                _context.next = 10;
                 break;
 
-              case 5:
-                _context.prev = 5;
-                _context.t0 = _context["catch"](0);
-                console.log(_context.t0);
+              case 6:
+                _context.prev = 6;
+                _context.t0 = _context["catch"](1);
+                console.log(Object(_utils__WEBPACK_IMPORTED_MODULE_2__["gqlErrors"])(_context.t0));
+                _this.errors = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["gqlErrors"])(_context.t0);
 
-              case 8:
-                console.log("Hey!");
-
-              case 9:
+              case 10:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 5]]);
+        }, _callee, null, [[1, 6]]);
       }))();
     }
   }
@@ -32896,6 +32903,22 @@ var render = function() {
             "div",
             { staticClass: "w-full sm:shadow-xl sm:bg-white sm:py-8 sm:px-12" },
             [
+              _vm.errors.length
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "p-2 bg-red-600 text-gray-100 rounded-sm mb-6 text-sm text-center"
+                    },
+                    _vm._l(_vm.errors, function(error, index) {
+                      return _c("div", { key: index }, [
+                        _vm._v(_vm._s(error.message))
+                      ])
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
               _c(
                 "div",
                 {
@@ -50785,6 +50808,43 @@ var routes = [{
   routes: routes,
   mode: "history"
 }));
+
+/***/ }),
+
+/***/ "./resources/js/utils.js":
+/*!*******************************!*\
+  !*** ./resources/js/utils.js ***!
+  \*******************************/
+/*! exports provided: gqlErrors */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gqlErrors", function() { return gqlErrors; });
+function gqlErrors(err) {
+  var hasInternal = function hasInternal(errors) {
+    return errors.some(function (e) {
+      return e.internal;
+    });
+  };
+
+  var replaceInternal = function replaceInternal(errors, err) {
+    return hasInternal(errors) ? errors.filter(function (e) {
+      return !e.internal;
+    }).concat(err) : errors;
+  };
+
+  return replaceInternal(((err === null || err === void 0 ? void 0 : err.graphQLErrors) || []).map(function (error) {
+    var _error$path;
+
+    return {
+      message: error.message,
+      internal: Boolean(!(error !== null && error !== void 0 && (_error$path = error.path) !== null && _error$path !== void 0 && _error$path.length))
+    };
+  }), {
+    message: 'Something bad happened'
+  });
+}
 
 /***/ }),
 
