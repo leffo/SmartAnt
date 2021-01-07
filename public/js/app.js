@@ -51235,8 +51235,9 @@ function gqlErrors(err) {
     if ("validation" === ((_error$extensions = error.extensions) === null || _error$extensions === void 0 ? void 0 : _error$extensions.category)) {
       var _error$extensions2, _error$extensions3;
 
-      console.log(Object.keys(((_error$extensions2 = error.extensions) === null || _error$extensions2 === void 0 ? void 0 : _error$extensions2.validaton) || {}));
-      Object.keys(((_error$extensions3 = error.extensions) === null || _error$extensions3 === void 0 ? void 0 : _error$extensions3.validaton) || {});
+      // console.log('YYYYeee!');
+      console.log(Object.keys(((_error$extensions2 = error.extensions) === null || _error$extensions2 === void 0 ? void 0 : _error$extensions2.validation) || {}));
+      Object.keys(((_error$extensions3 = error.extensions) === null || _error$extensions3 === void 0 ? void 0 : _error$extensions3.validation) || {});
     }
 
     return {

@@ -5,9 +5,10 @@ export function gqlErrors(err) {
 
     return replaceInternal((err?.graphQLErrors || []).map(error => {
         if ("validation" === error.extensions?.category) {
-            console.log(Object.keys(error.extensions?.validaton || {}));
+            // console.log('YYYYeee!');
+            console.log(Object.keys(error.extensions?.validation || {}));
 
-            Object.keys(error.extensions?.validaton || {});
+            Object.keys(error.extensions?.validation || {});
 
         }
 
