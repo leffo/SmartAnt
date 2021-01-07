@@ -51233,11 +51233,20 @@ function gqlErrors(err) {
     var _error$extensions, _error$path;
 
     if ("validation" === ((_error$extensions = error.extensions) === null || _error$extensions === void 0 ? void 0 : _error$extensions.category)) {
-      var _error$extensions2, _error$extensions3;
+      var _error$extensions2;
 
-      // console.log('YYYYeee!');
-      console.log(Object.keys(((_error$extensions2 = error.extensions) === null || _error$extensions2 === void 0 ? void 0 : _error$extensions2.validation) || {}));
-      Object.keys(((_error$extensions3 = error.extensions) === null || _error$extensions3 === void 0 ? void 0 : _error$extensions3.validation) || {});
+      var validationErr = ((_error$extensions2 = error.extensions) === null || _error$extensions2 === void 0 ? void 0 : _error$extensions2.validation) || {};
+      Object.keys(validationErr).map(function (key) {
+        return validationErr[key];
+      });
+      return Object.keys(validationErr).map(function (key) {
+        return validationErr[key];
+      }).flat().map(function (v) {
+        return {
+          message: v,
+          internal: false
+        };
+      });
     }
 
     return {
@@ -51246,7 +51255,7 @@ function gqlErrors(err) {
     };
   }), {
     message: 'Something bad happened'
-  });
+  }).flat();
 }
 
 /***/ }),

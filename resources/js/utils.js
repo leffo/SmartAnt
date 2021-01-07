@@ -5,11 +5,14 @@ export function gqlErrors(err) {
 
     return replaceInternal((err?.graphQLErrors || []).map(error => {
         if ("validation" === error.extensions?.category) {
-            // console.log('YYYYeee!');
-            console.log(Object.keys(error.extensions?.validation || {}));
+            const validationErr = error.extensions?.validation || {};
 
-            Object.keys(error.extensions?.validation || {});
+            Object.keys(validationErr).map(key => validationErr[key]);
 
+            return Object.keys(validationErr).map(key => validationErr[key]).flat().map(v => ({
+                message: v,
+                internal: false
+            }));
         }
 
        return {
@@ -18,5 +21,5 @@ export function gqlErrors(err) {
         }
     }), {
         message: 'Something bad happened'
-    });
+    }).flat();
 }
