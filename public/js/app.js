@@ -5640,10 +5640,21 @@ function stripSymbols(data) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_List__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/List */ "./resources/js/components/List.vue");
-/* harmony import */ var _graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./graphql/BoardWithListsAndCards.gql */ "./resources/js/graphql/BoardWithListsAndCards.gql");
-/* harmony import */ var _graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./resources/js/constants.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_List__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/List */ "./resources/js/components/List.vue");
+/* harmony import */ var _graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./graphql/BoardWithListsAndCards.gql */ "./resources/js/graphql/BoardWithListsAndCards.gql");
+/* harmony import */ var _graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants */ "./resources/js/constants.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _graphql_Logout_gql__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./graphql/Logout.gql */ "./resources/js/graphql/Logout.gql");
+/* harmony import */ var _graphql_Logout_gql__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_graphql_Logout_gql__WEBPACK_IMPORTED_MODULE_5__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -5671,25 +5682,73 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    List: _components_List__WEBPACK_IMPORTED_MODULE_0__["default"]
+    List: _components_List__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapState"])({
+    isLoggedIn: "isLoggedIn",
+    name: function name(state) {
+      return state.user.name;
+    }
+  }),
   apollo: {
     board: {
-      query: _graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_1___default.a,
+      query: _graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_2___default.a,
       variables: {
         id: 1
       }
     }
   },
   methods: {
+    logout: function logout() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _response$data, _response$data$logout;
+
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _this.$apollo.mutate({
+                  mutation: _graphql_Logout_gql__WEBPACK_IMPORTED_MODULE_5___default.a
+                });
+
+              case 2:
+                response = _context.sent;
+
+                if ((_response$data = response.data) !== null && _response$data !== void 0 && (_response$data$logout = _response$data.logout) !== null && _response$data$logout !== void 0 && _response$data$logout.id) {
+                  _this.$store.dispatch("logout");
+                }
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
     updateQueryCache: function updateQueryCache(event) {
       var data = event.store.readQuery({
-        query: _graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_1___default.a,
+        query: _graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_2___default.a,
         variables: {
           id: Number(this.board.id)
         }
@@ -5702,17 +5761,17 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       switch (event.type) {
-        case _constants__WEBPACK_IMPORTED_MODULE_2__["EVENT_CARD_ADDED"]:
+        case _constants__WEBPACK_IMPORTED_MODULE_3__["EVENT_CARD_ADDED"]:
           listById().cards.push(event.data);
           break;
 
-        case _constants__WEBPACK_IMPORTED_MODULE_2__["EVENT_CARD_UPDATED"]:
+        case _constants__WEBPACK_IMPORTED_MODULE_3__["EVENT_CARD_UPDATED"]:
           listById().cards.filter(function (card) {
             return card.id == event.data.id;
           }).title = event.data.title;
           break;
 
-        case _constants__WEBPACK_IMPORTED_MODULE_2__["EVENT_CARD_DELETED"]:
+        case _constants__WEBPACK_IMPORTED_MODULE_3__["EVENT_CARD_DELETED"]:
           listById().cards = listById().cards.filter(function (card) {
             return card.id != event.data.id;
           });
@@ -5720,7 +5779,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       event.store.writeQuery({
-        query: _graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_1___default.a,
+        query: _graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_2___default.a,
         data: data
       });
     }
@@ -5836,21 +5895,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 4:
-                _context.next = 10;
+                _this.$store.dispatch('setLoggedIn', true);
+
+                _this.$router.push({
+                  name: "board"
+                });
+
+                _context.next = 11;
                 break;
 
-              case 6:
-                _context.prev = 6;
+              case 8:
+                _context.prev = 8;
                 _context.t0 = _context["catch"](1);
-                console.log(Object(_utils__WEBPACK_IMPORTED_MODULE_2__["gqlErrors"])(_context.t0));
                 _this.errors = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["gqlErrors"])(_context.t0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[1, 6]]);
+        }, _callee, null, [[1, 8]]);
       }))();
     }
   }
@@ -5974,24 +6038,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 4:
+                _this.$store.dispatch('setLoggedIn', true);
+
                 _this.$router.push({
                   name: "board"
                 });
 
-                _context.next = 10;
+                _context.next = 11;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 8:
+                _context.prev = 8;
                 _context.t0 = _context["catch"](1);
                 _this.errors = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["gqlErrors"])(_context.t0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[1, 7]]);
+        }, _callee, null, [[1, 8]]);
       }))();
     }
   }
@@ -32908,7 +32974,66 @@ var render = function() {
     "div",
     { staticClass: "h-full flex flex-col items-stretch bg-purple-500" },
     [
-      _vm._m(0),
+      _c(
+        "div",
+        {
+          staticClass:
+            "header text-white flex justify-between items-center mb-2 bg-purple-600"
+        },
+        [
+          _c("div", { staticClass: "ml-2 w-1/3" }, [_vm._v("x")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "text-lg opacity-50 cursor-pointer hover:opacity-75"
+            },
+            [_vm._v("SmartAnt")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mr-2 w-1/3 flex justify-end" }, [
+            _vm.isLoggedIn
+              ? _c("div", { staticClass: "flex items-center" }, [
+                  _c("div", { staticClass: "text-sm mr-2" }, [
+                    _vm._v(_vm._s(_vm.name))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    { staticClass: "header-btn", on: { click: _vm.logout } },
+                    [_vm._v("Logout")]
+                  )
+                ])
+              : _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "header-btn",
+                      on: {
+                        click: function($event) {
+                          return _vm.$router.push({ name: "login" })
+                        }
+                      }
+                    },
+                    [_vm._v("Sign In")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "header-btn",
+                      on: {
+                        click: function($event) {
+                          return _vm.$router.push({ name: "register" })
+                        }
+                      }
+                    },
+                    [_vm._v("Register")]
+                  )
+                ])
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "h-full flex flex-1 flex-col items-stretch" }, [
         _c("div", { staticClass: "mx-4 mb-2 text-white font-bold text-lg" }, [
@@ -32945,31 +33070,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "header text-white flex justify-between items-center mb-2 bg-purple-600"
-      },
-      [
-        _c("div", { staticClass: "ml-2 w-1/3" }, [_vm._v("x")]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "text-lg opacity-50 cursor-pointer hover:opacity-75" },
-          [_vm._v("SmartAnt")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "mr-2 w-1/3 flex justify-end" }, [_vm._v("x")])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -51178,7 +51279,11 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   apolloProvider: _apollo_config__WEBPACK_IMPORTED_MODULE_1__["default"],
   router: _router_config__WEBPACK_IMPORTED_MODULE_4__["default"],
-  store: _vuex_config__WEBPACK_IMPORTED_MODULE_5__["default"]
+  store: _vuex_config__WEBPACK_IMPORTED_MODULE_5__["default"],
+  beforeCreate: function beforeCreate() {
+    _vuex_config__WEBPACK_IMPORTED_MODULE_5__["default"].dispatch('setLoggedIn', localStorage.getItem('isLoggedIn') === 'true');
+    _vuex_config__WEBPACK_IMPORTED_MODULE_5__["default"].dispatch('fetchCurrentUser');
+  }
 });
 
 /***/ }),
@@ -52296,6 +52401,272 @@ var EVENT_CARD_UPDATED = 'EVENT_CARD_UPDATED';
 
 /***/ }),
 
+/***/ "./resources/js/graphql/Logout.gql":
+/*!*****************************************!*\
+  !*** ./resources/js/graphql/Logout.gql ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Logout"},"variableDefinitions":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"logout"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":50}};
+    doc.loc.source = {"body":"mutation Logout {\n    logout {\n        id\n    }\n}\n","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+  
+
+    var names = {};
+    function unique(defs) {
+      return defs.filter(
+        function(def) {
+          if (def.kind !== 'FragmentDefinition') return true;
+          var name = def.name.value
+          if (names[name]) {
+            return false;
+          } else {
+            names[name] = true;
+            return true;
+          }
+        }
+      )
+    }
+  
+
+    // Collect any fragment/type references from a node, adding them to the refs Set
+    function collectFragmentReferences(node, refs) {
+      if (node.kind === "FragmentSpread") {
+        refs.add(node.name.value);
+      } else if (node.kind === "VariableDefinition") {
+        var type = node.type;
+        if (type.kind === "NamedType") {
+          refs.add(type.name.value);
+        }
+      }
+
+      if (node.selectionSet) {
+        node.selectionSet.selections.forEach(function(selection) {
+          collectFragmentReferences(selection, refs);
+        });
+      }
+
+      if (node.variableDefinitions) {
+        node.variableDefinitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+
+      if (node.definitions) {
+        node.definitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+    }
+
+    var definitionRefs = {};
+    (function extractReferences() {
+      doc.definitions.forEach(function(def) {
+        if (def.name) {
+          var refs = new Set();
+          collectFragmentReferences(def, refs);
+          definitionRefs[def.name.value] = refs;
+        }
+      });
+    })();
+
+    function findOperation(doc, name) {
+      for (var i = 0; i < doc.definitions.length; i++) {
+        var element = doc.definitions[i];
+        if (element.name && element.name.value == name) {
+          return element;
+        }
+      }
+    }
+
+    function oneQuery(doc, operationName) {
+      // Copy the DocumentNode, but clear out the definitions
+      var newDoc = {
+        kind: doc.kind,
+        definitions: [findOperation(doc, operationName)]
+      };
+      if (doc.hasOwnProperty("loc")) {
+        newDoc.loc = doc.loc;
+      }
+
+      // Now, for the operation we're running, find any fragments referenced by
+      // it or the fragments it references
+      var opRefs = definitionRefs[operationName] || new Set();
+      var allRefs = new Set();
+      var newRefs = new Set();
+
+      // IE 11 doesn't support "new Set(iterable)", so we add the members of opRefs to newRefs one by one
+      opRefs.forEach(function(refName) {
+        newRefs.add(refName);
+      });
+
+      while (newRefs.size > 0) {
+        var prevRefs = newRefs;
+        newRefs = new Set();
+
+        prevRefs.forEach(function(refName) {
+          if (!allRefs.has(refName)) {
+            allRefs.add(refName);
+            var childRefs = definitionRefs[refName] || new Set();
+            childRefs.forEach(function(childRef) {
+              newRefs.add(childRef);
+            });
+          }
+        });
+      }
+
+      allRefs.forEach(function(refName) {
+        var op = findOperation(doc, refName);
+        if (op) {
+          newDoc.definitions.push(op);
+        }
+      });
+
+      return newDoc;
+    }
+
+    module.exports = doc;
+    
+        module.exports["Logout"] = oneQuery(doc, "Logout");
+        
+
+
+/***/ }),
+
+/***/ "./resources/js/graphql/Me.gql":
+/*!*************************************!*\
+  !*** ./resources/js/graphql/Me.gql ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Me"},"variableDefinitions":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"me"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"name"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"email"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":66}};
+    doc.loc.source = {"body":"query Me {\n    me {\n        id\n        name\n        email\n    }\n}\n","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+  
+
+    var names = {};
+    function unique(defs) {
+      return defs.filter(
+        function(def) {
+          if (def.kind !== 'FragmentDefinition') return true;
+          var name = def.name.value
+          if (names[name]) {
+            return false;
+          } else {
+            names[name] = true;
+            return true;
+          }
+        }
+      )
+    }
+  
+
+    // Collect any fragment/type references from a node, adding them to the refs Set
+    function collectFragmentReferences(node, refs) {
+      if (node.kind === "FragmentSpread") {
+        refs.add(node.name.value);
+      } else if (node.kind === "VariableDefinition") {
+        var type = node.type;
+        if (type.kind === "NamedType") {
+          refs.add(type.name.value);
+        }
+      }
+
+      if (node.selectionSet) {
+        node.selectionSet.selections.forEach(function(selection) {
+          collectFragmentReferences(selection, refs);
+        });
+      }
+
+      if (node.variableDefinitions) {
+        node.variableDefinitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+
+      if (node.definitions) {
+        node.definitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+    }
+
+    var definitionRefs = {};
+    (function extractReferences() {
+      doc.definitions.forEach(function(def) {
+        if (def.name) {
+          var refs = new Set();
+          collectFragmentReferences(def, refs);
+          definitionRefs[def.name.value] = refs;
+        }
+      });
+    })();
+
+    function findOperation(doc, name) {
+      for (var i = 0; i < doc.definitions.length; i++) {
+        var element = doc.definitions[i];
+        if (element.name && element.name.value == name) {
+          return element;
+        }
+      }
+    }
+
+    function oneQuery(doc, operationName) {
+      // Copy the DocumentNode, but clear out the definitions
+      var newDoc = {
+        kind: doc.kind,
+        definitions: [findOperation(doc, operationName)]
+      };
+      if (doc.hasOwnProperty("loc")) {
+        newDoc.loc = doc.loc;
+      }
+
+      // Now, for the operation we're running, find any fragments referenced by
+      // it or the fragments it references
+      var opRefs = definitionRefs[operationName] || new Set();
+      var allRefs = new Set();
+      var newRefs = new Set();
+
+      // IE 11 doesn't support "new Set(iterable)", so we add the members of opRefs to newRefs one by one
+      opRefs.forEach(function(refName) {
+        newRefs.add(refName);
+      });
+
+      while (newRefs.size > 0) {
+        var prevRefs = newRefs;
+        newRefs = new Set();
+
+        prevRefs.forEach(function(refName) {
+          if (!allRefs.has(refName)) {
+            allRefs.add(refName);
+            var childRefs = definitionRefs[refName] || new Set();
+            childRefs.forEach(function(childRef) {
+              newRefs.add(childRef);
+            });
+          }
+        });
+      }
+
+      allRefs.forEach(function(refName) {
+        var op = findOperation(doc, refName);
+        if (op) {
+          newDoc.definitions.push(op);
+        }
+      });
+
+      return newDoc;
+    }
+
+    module.exports = doc;
+    
+        module.exports["Me"] = oneQuery(doc, "Me");
+        
+
+
+/***/ }),
+
 /***/ "./resources/js/graphql/Register.gql":
 /*!*******************************************!*\
   !*** ./resources/js/graphql/Register.gql ***!
@@ -52533,20 +52904,110 @@ function gqlErrors(err) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _apollo_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./apollo.config */ "./resources/js/apollo.config.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _apollo_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./apollo.config */ "./resources/js/apollo.config.js");
+/* harmony import */ var _graphql_Me_gql__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./graphql/Me.gql */ "./resources/js/graphql/Me.gql");
+/* harmony import */ var _graphql_Me_gql__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_graphql_Me_gql__WEBPACK_IMPORTED_MODULE_4__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]);
 var store = {
-  state: {},
-  mutations: {},
-  actions: {}
+  state: {
+    isLoggedIn: false,
+    user: {
+      id: null,
+      name: null,
+      email: null
+    }
+  },
+  mutations: {
+    setLoggedIn: function setLoggedIn(state, payload) {
+      state.isLoggedIn = Boolean(payload);
+    },
+    setUser: function setUser(state, payload) {
+      state.user = payload;
+    }
+  },
+  actions: {
+    setLoggedIn: function setLoggedIn(_ref, payload) {
+      var commit = _ref.commit;
+      var isLoggedIn = Boolean(payload);
+      localStorage.setItem("isLoggedIn", isLoggedIn);
+      commit("setLoggedIn", isLoggedIn);
+    },
+    logout: function logout(_ref2) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var commit, dispatch;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                commit = _ref2.commit, dispatch = _ref2.dispatch;
+                commit("setUser", {
+                  id: null,
+                  name: null,
+                  email: null
+                });
+                dispatch("setLoggedIn", false);
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    fetchCurrentUser: function fetchCurrentUser(_ref3) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _result$data;
+
+        var commit, dispatch, result, user;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                commit = _ref3.commit, dispatch = _ref3.dispatch;
+                _context2.next = 3;
+                return _apollo_config__WEBPACK_IMPORTED_MODULE_3__["default"].defaultClient.query({
+                  query: _graphql_Me_gql__WEBPACK_IMPORTED_MODULE_4___default.a,
+                  fetchPolicy: "no-cache"
+                });
+
+              case 3:
+                result = _context2.sent;
+                user = (_result$data = result.data) === null || _result$data === void 0 ? void 0 : _result$data.me;
+
+                if (user) {
+                  commit("setUser", user);
+                  dispatch("setLoggedIn", true);
+                } else {
+                  dispatch("logout");
+                }
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    }
+  }
 };
-/* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store(store));
+/* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store(store));
 
 /***/ }),
 

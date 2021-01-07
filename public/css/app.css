@@ -615,6 +615,27 @@ video {
   }
 }
 
+.header-btn {
+  background-color: hsla(0, 0%, 100%, 0.3);
+  border-radius: 0.125rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  outline: 0;
+  white-space: nowrap;
+}
+
+.header-btn:focus {
+  outline: 0;
+}
+
+.header-btn:hover {
+  opacity: 0.75;
+}
+
 .space-y-0 > :not(template) ~ :not(template) {
   --space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--space-y-reverse)));
