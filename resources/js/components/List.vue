@@ -45,9 +45,9 @@
         },
         computed: mapState({
             canAddCard(state) {
-                return this.list.board.ownwr.id == state.user.id;
+                return this.list.board.owner.id == state.user.id;
             }
-        }),
+        })
     }
 </script>
 

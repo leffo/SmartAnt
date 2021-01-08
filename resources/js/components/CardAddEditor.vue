@@ -4,9 +4,9 @@
 
 <script>
 import CardAdd from "./../graphql/CardAdd.gql";
-import {EVENT_CARD_ADDED} from "../constants";
+import { EVENT_CARD_ADDED } from "../constants";
 import CardEditor from "./CardEditor";
-import {mapState} from "vuex";
+import { mapState } from "vuex";
 
 export default {
     components: { CardEditor },
@@ -16,14 +16,14 @@ export default {
     data() {
         return {
             title: null
-        }
+        };
     },
     computed: mapState({
         userId: state => state.user.id
     }),
-    mounted() {
-        this.$refs.card.focus();
-    },
+    // mounted() {
+    //     this.$refs.card.focus();
+    // },
     methods: {
         addCard() {
             const self = this;
@@ -33,7 +33,7 @@ export default {
                     title: this.title,
                     listId: this.list.id,
                     order: this.list.cards.length + 1,
-                    ownwrId: this.userId
+                    ownerId: this.userId
                 },
                 update(store, {data: {cardAdd}}) {
                     self.$emit("added", {store, data: cardAdd, type: EVENT_CARD_ADDED});
@@ -45,6 +45,6 @@ export default {
             this.$emit('closed');
         }
     }
-}
+};
 </script>
 

@@ -6311,9 +6311,9 @@ __webpack_require__.r(__webpack_exports__);
       return state.user.id;
     }
   }),
-  mounted: function mounted() {
-    this.$refs.card.focus();
-  },
+  // mounted() {
+  //     this.$refs.card.focus();
+  // },
   methods: {
     addCard: function addCard() {
       var self = this;
@@ -6323,7 +6323,7 @@ __webpack_require__.r(__webpack_exports__);
           title: this.title,
           listId: this.list.id,
           order: this.list.cards.length + 1,
-          ownwrId: this.userId
+          ownerId: this.userId
         },
         update: function update(store, _ref) {
           var cardAdd = _ref.data.cardAdd;
@@ -6487,7 +6487,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])({
     canAddCard: function canAddCard(state) {
-      return this.list.board.ownwr.id == state.user.id;
+      return this.list.board.owner.id == state.user.id;
     }
   })
 });
