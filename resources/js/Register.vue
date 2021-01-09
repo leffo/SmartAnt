@@ -7,13 +7,13 @@
 
             <div class="w-full sm:shadow-xl sm:bg-white sm:py-8 sm:px-12">
                 <Errors :errors="errors"></Errors>
-                <div class="w-full text-center text-gray-600 font-bold mb-8 ">Signup to your account</div>
+                <div class="w-full text-center text-gray-600 font-bold mb-8 ">Зарегистрироваться</div>
 
                 <form @submit.prevent="register">
                     <div class="w-full mb-4">
                         <input type="text"
                                class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-solid border-2 w-full text-sm"
-                               placeholder="Enter e-mail"
+                               placeholder="Введите e-mail"
                                v-model="email"
                         />
                     </div>
@@ -21,7 +21,7 @@
                     <div class="w-full mb-4">
                         <input type="text"
                                class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-solid border-2 w-full text-sm"
-                               placeholder="Enter full name"
+                               placeholder="Введите полное имя"
                                v-model="name"
                         />
                     </div>
@@ -29,7 +29,7 @@
                     <div class="w-full mb-4">
                         <input type="password"
                                class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-solid border-2 w-full text-sm"
-                               placeholder="Enter password"
+                               placeholder="Введите пароль"
                                v-model="password"
                         />
                     </div>
@@ -37,7 +37,7 @@
                     <div class="w-full mb-6">
                         <button type="submit"
                                 class="rounded-sm px-4 py-2 text-sm bg-green-500 font-bold outline-none focus:outline-none hover:bg-opacity-75 w-full text-white disabled:opacity-25">
-                            Signup
+                            Зарегистрироваться
                         </button>
                     </div>
                 </form>
@@ -48,7 +48,7 @@
                     <router-link
                         :to="{name: 'login'}"
                         class="text-blue-600 hover:underline">
-                        Already have an account? Log in
+                        Уже есть аккаунт? Войти...
                     </router-link>
                 </div>
             </div>

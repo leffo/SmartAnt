@@ -2,7 +2,7 @@
     <div>
         <textarea
             class="rounded-md shadow-card py-1 px-2 outline-none w-11/12 text-gray-900 text-sm bg-white h-16 resize-none ml-2 mr-2"
-            placeholder="Enter a title for this card..."
+            placeholder="Введите название карты..."
             :value="value"
             ref="card"
             @keyup.esc="closed"
@@ -19,7 +19,7 @@
             <button
                 @click="closed"
                 class="py-1 px-3 rounded-md hover:bg-gray-400 cursor-pointer text-gray-500 mr-2 mb-2">
-                Cancel
+                Отмена
             </button>
         </div>
     </div>

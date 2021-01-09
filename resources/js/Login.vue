@@ -8,13 +8,13 @@
             <div class="w-full sm:shadow-xl sm:bg-white sm:py-8 sm:px-12">
                 <Errors :errors="errors"></Errors>
 
-                <div class="w-full text-center text-gray-600 font-bold mb-8 ">Log in to SmartAnt</div>
+                <div class="w-full text-center text-gray-600 font-bold mb-8 ">Войти в SmartAnt</div>
 
                 <form @submit.prevent="authenticate">
                     <div class="w-full mb-4">
                         <input type="text"
                                class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-solid border-2 w-full text-sm"
-                                placeholder="Enter e-mail"
+                                placeholder="Введите e-mail"
                                v-model="email"
                         />
                     </div>
@@ -22,7 +22,7 @@
                     <div class="w-full mb-4">
                         <input type="password"
                                class="rounded-sm px-4 py-2 outline-none focus:outline-none border-gray-400 bg-gray-100 border-solid border-2 w-full text-sm"
-                               placeholder="Enter password"
+                               placeholder="Введите пароль"
                                v-model="password"
                         />
                     </div>
@@ -30,7 +30,7 @@
                     <div class="w-full mb-6">
                         <button type="submit"
                                 class="rounded-sm px-4 py-2 text-sm bg-green-500 font-bold outline-none focus:outline-none hover:bg-opacity-75 w-full text-white disabled:opacity-25">
-                        Login
+                        Войти
                         </button>
                     </div>
                 </form>
@@ -41,7 +41,7 @@
                     <router-link
                         :to="{name: 'register'}"
                         class="text-blue-600 hover:underline">
-                        Sign up for an account
+                        Зарегистрироваться
                     </router-link>
                 </div>
             </div>

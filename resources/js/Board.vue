@@ -2,24 +2,24 @@
     <div class="h-full flex flex-col items-stretch" :class="bgColor">
         <div class="header text-white flex justify-between items-center mb-2">
             <div class="ml-4 w-1/3">
-                <UserBoardsDropdown></UserBoardsDropdown>
+                <UserBoardsDropdown v-if="isLoggedIn"></UserBoardsDropdown>
            </div>
             <div class="text-xl opacity-50 cursor-pointer hover:opacity-75">SmartAnt</div>
             <div class="mr-4 w-1/3 flex justify-end">
                 <div v-if="isLoggedIn" class="flex items-center">
                     <div class="text-sm mr-2">{{ name }}</div>
-                    <button class="header-btn" @click="logout">Logout</button>
+                    <button class="header-btn" @click="logout">Выход</button>
                 </div>
                 <div v-else>
-                    <button class="header-btn" @click="$router.push({name: 'login'})">Sign In</button>
-                    <button class="header-btn" @click="$router.push({name: 'register'})">Register</button>
+                    <button class="header-btn" @click="$router.push({name: 'login'})">Войти</button>
+                    <button class="header-btn" @click="$router.push({name: 'register'})">Зарегистрироваться</button>
                 </div>
             </div>
         </div>
 
         <div class="h-full flex flex-1 flex-col items-stretch">
             <div class="mx-4 mb-2 text-white font-bold text-lg">
-                <span v-if="$apollo.queries.board.loading">Loading...</span>
+                <span v-if="$apollo.queries.board.loading">Загружается...</span>
                 <span v-else>{{ board.title }}</span>
             </div>
             <div class="flex flex-1 items-start overflow-x-auto mx-2" v-if="board">

@@ -13,7 +13,8 @@
                 >E</div>
                 <div
                     class="text-gray-400 hover:text-red-700"
-                    @click="cardDelete">D</div>
+                    @click="cardDelete"
+                >D</div>
             </div>
         </div>
         <CardEditor

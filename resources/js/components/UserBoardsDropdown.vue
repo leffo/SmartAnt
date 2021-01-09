@@ -1,8 +1,8 @@
 <template>
     <div>
-        <button class="header-btn" @click="showBoards = !showBoards">Boards</button>
+        <button class="header-btn" @click="showBoards = !showBoards">Доски задач</button>
         <DropdownMenu :show="showBoards" @closed="showBoards = false">
-            <div class="text-gray-600 text-xs font-semibold mb-2 ml-1">BOARDS</div>
+            <div class="text-gray-600 text-xs font-semibold mb-2 ml-1">ДОСКИ ЗАДАЧ</div>
 
             <router-link
                 :to="{name: 'board', params: {id: board.id}}"
@@ -19,27 +19,22 @@
             <div
                 @click="showModal = true"
                 class="rounded-sm hover:bg-gray-400 p-2 underline cursor-pointer mt-2"
-            >Create new board...</div>
+            >Создать новую доску задач...</div>
 
-            <Modal
-                :width="300"
-                :height="250"
-                :show="showModal"
-                @closed="showModal = false"
-            >Hello that's message inside the modal!</Modal>
+            <BoardAddModal :show="showModal" @closed="showModal = false"></BoardAddModal>
         </DropdownMenu>
     </div>
 </template>
 
 <script>
 import DropdownMenu from "./DropdownMenu";
-import Modal from "./Modal";
+import BoardAddModal from "./BoardAddModal";
 import UserBoards from "./../graphql/UserBoards.gql";
 import { mapState } from "vuex";
 import {colorMap100, colorMap200} from "../utils";
 
 export default {
-    components: { DropdownMenu, Modal },
+    components: { DropdownMenu, BoardAddModal },
     apollo: {
         userBoards: {
             query: UserBoards,
