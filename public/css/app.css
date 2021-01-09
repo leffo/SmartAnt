@@ -16747,6 +16747,15 @@ video {
   transition-delay: 1000ms;
 }
 
+.appear-enter-active, .appear-leave-active {
+  transition: all 1000ms ease-in;
+}
+
+.appear-enter, .appear-leave-to {
+  opacity: 0;
+  transform: translate(20px);
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
