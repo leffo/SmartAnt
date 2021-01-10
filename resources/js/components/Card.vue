@@ -3,6 +3,11 @@
         <div v-if="!editing"
             class="group bg-white shadow-card rounded-sm p-2 cursor-pointer text-sm hover:bg-gray-100 mb-2 mx-2 flex justify-between">
             <div>{{ card.title }}</div>
+            <date-picker
+                v-model="timeRange"
+                range
+                class="absolute"
+            ></date-picker>
             <div
                 v-if="card.owner.id == userId"
                 class="flex font-bold opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-500 text-2xl"
@@ -30,15 +35,21 @@ import {EVENT_CARD_DELETED, EVENT_CARD_UPDATED} from "../constants";
 import CardEditor from "./CardEditor";
 import {mapState} from "vuex";
 
+import DatePicker from 'vue2-datepicker';
+import 'vue2-datepicker/index.css';
+
+
+
 export default {
-    components: { CardEditor },
+    components: { CardEditor, DatePicker },
     props: {
         card: Object
     },
     data() {
         return {
             editing: false,
-            title: this.card.title
+            title: this.card.title,
+            timeRange: null
         };
     },
     computed: mapState({
