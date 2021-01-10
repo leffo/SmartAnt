@@ -5,23 +5,39 @@
             <div>{{ card.title }}</div>
             <div
                 v-if="card.owner.id == userId"
-                class="flex font-bold opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-500"
+                class="flex font-bold opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-500 object-right-bottom inline-block float-right"
             >
                 <div
-                    class="text-gray-400 pr-2 hover:text-yellow-700"
+                    class="text-gray-400 pr-2 hover:text-yellow-700 float-right"
                     @click="editing=true"
-                >E</div>
+                >
+                    <img
+                        class="min-w-16px h-14px opacity-75 hover:opacity-50 "
+                        src="../../images/pen32.svg"
+                        height="16"
+                        width="14"
+                        alt="E"
+                    />
+                </div>
                 <div
                     class="text-gray-400 hover:text-red-700"
                     @click="cardDelete"
-                >D</div>
+                >
+                    <img
+                        class="min-w-16px h-20px opacity-75 hover:opacity-50"
+                        src="../../images/rec32.svg"
+                        height="16"
+                        width="20"
+                        alt="D"
+                    />
+                </div>
             </div>
         </div>
         <CardEditor
             v-else
             v-model="title"
             class="mb-2"
-            label="Save card"
+            label="Сохранить"
             @closed="editing=false"
             @saved="cardUpdate"
         ></CardEditor>

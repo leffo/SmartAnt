@@ -22,7 +22,11 @@ type Mutation {
         @create
         @can(ability: "createCard", model: "App\\CardList", find: "list_id")
     cardDelete(id: ID!): Card @delete @can(ability: "delete", find: "id")
-    cardUpdate(id: ID!, title: String): Card @update @can(ability: "update", find: "id")
+    cardUpdate(id: ID!, title: String): Card
+        @update
+        @can(ability: "update", find: "id")
+
+    boardAdd(title: String!, color: String!): Board! @create
 
     login(email: String!, password: String!): User!
     logout: User @guard

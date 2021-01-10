@@ -4,7 +4,16 @@
             <div class="ml-4 w-1/3">
                 <UserBoardsDropdown v-if="isLoggedIn"></UserBoardsDropdown>
            </div>
-            <div class="text-xl opacity-50 cursor-pointer hover:opacity-75">SmartAnt</div>
+            <div class="text-xl opacity-50 cursor-pointer hover:opacity-75">
+                <div class="flex">
+                    <img
+                        class="flex mr-3 items-center"
+                        src="../images/Ant Emoji.png"
+                        height="40"
+                        width="42"/>
+                    <div class="flex items-center">SmartAnt</div>
+                </div>
+            </div>
             <div class="mr-4 w-1/3 flex justify-end">
                 <div v-if="isLoggedIn" class="flex items-center">
                     <div class="text-sm mr-2">{{ name }}</div>
@@ -103,7 +112,11 @@ export default {
                     break;
             }
 
-            event.store.writeQuery({ query: BoardQuery, data });
+            event.store.writeQuery({
+                query: BoardQuery,
+                data,
+                variables: { id: Number(this.board.id) }
+            });
         }
     }
 };
