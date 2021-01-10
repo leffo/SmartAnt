@@ -1,36 +1,14 @@
 <template>
     <div>
         <div v-if="!editing"
-            class="group bg-white shadow-card rounded-sm p-2 cursor-pointer text_sm hover:bg-gray-300 mb-2 mr-2 ml-2 flex justify-between">
+            class="group bg-white shadow-card rounded-sm p-2 cursor-pointer text-sm hover:bg-gray-100 mb-2 mx-2 flex justify-between">
             <div>{{ card.title }}</div>
             <div
                 v-if="card.owner.id == userId"
-                class="flex font-bold opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-500 object-right-bottom inline-block float-right"
+                class="flex font-bold opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-500 text-2xl"
             >
-                <div
-                    class="text-gray-400 pr-2 hover:text-yellow-700 float-right"
-                    @click="editing=true"
-                >
-                    <img
-                        class="min-w-16px h-14px opacity-75 hover:opacity-50 "
-                        src="../../images/pen32.svg"
-                        height="16"
-                        width="14"
-                        alt="E"
-                    />
-                </div>
-                <div
-                    class="text-gray-400 hover:text-red-700"
-                    @click="cardDelete"
-                >
-                    <img
-                        class="min-w-16px h-20px opacity-75 hover:opacity-50"
-                        src="../../images/rec32.svg"
-                        height="16"
-                        width="20"
-                        alt="D"
-                    />
-                </div>
+                <div class="text-gray-400 pr-2 hover:text-yellow-700" @click="editing=true">✎</div>
+                <div class="text-gray-400 hover:text-red-700" @click="cardDelete">✗</div>
             </div>
         </div>
         <CardEditor

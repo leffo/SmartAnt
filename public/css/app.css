@@ -16776,6 +16776,11 @@ video {
   transform: translateY(20px);
 }
 
+.list {
+  min-width: 230px;
+  width: 230px;
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;

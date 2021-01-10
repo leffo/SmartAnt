@@ -1,7 +1,7 @@
 <template>
     <div class="h-full flex flex-col items-stretch" :class="bgColor">
         <div class="header text-white flex justify-between items-center mb-2">
-            <div class="ml-4 w-1/3">
+            <div class="ml-2 w-1/3">
                 <UserBoardsDropdown v-if="isLoggedIn"></UserBoardsDropdown>
            </div>
             <div class="text-xl opacity-50 cursor-pointer hover:opacity-75">
@@ -40,6 +40,8 @@
                     @card-deleted="updateQueryCache($event)"
                     @card-updated="updateQueryCache($event)"
                 ></List>
+
+                <ListAddEditor :board="board.id" @added="updateQueryCache($event)"></ListAddEditor>
             </div>
         </div>
     </div>
@@ -47,15 +49,16 @@
 
 <script>
 import List from "./components/List";
+import ListAddEditor from "./components/ListAddEditor";
 import UserBoardsDropdown from "./components/UserBoardsDropdown";
 import BoardQuery from "./graphql/BoardWithListsAndCards.gql";
-import {EVENT_CARD_ADDED, EVENT_CARD_DELETED, EVENT_CARD_UPDATED} from "./constants";
+import {EVENT_CARD_ADDED, EVENT_CARD_DELETED, EVENT_CARD_UPDATED, EVENT_LIST_ADDED} from "./constants";
 import { mapState } from "vuex";
 import Logout from "./graphql/Logout.gql"
 import {colorMap500} from "./utils";
 
 export default {
-    components: { List, UserBoardsDropdown },
+    components: { List, UserBoardsDropdown, ListAddEditor },
     computed: {
         bgColor() {
             return {
@@ -98,6 +101,9 @@ export default {
                 data.board.lists.find(list => list.id == event.listId)
 
             switch (event.type) {
+                case EVENT_LIST_ADDED:
+                    data.board.lists.push(event.data);
+                    break;
                 case EVENT_CARD_ADDED:
                     listById().cards.push(event.data);
                     break;

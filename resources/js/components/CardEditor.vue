@@ -19,7 +19,7 @@
             <button
                 @click="closed"
                 class="py-1 px-3 rounded-md hover:bg-gray-400 cursor-pointer text-gray-500 mr-2 mb-2">
-                Отмена
+                ✖
             </button>
         </div>
     </div>
