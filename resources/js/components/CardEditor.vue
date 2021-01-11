@@ -33,10 +33,10 @@ export default {
    },
     methods: {
         closed() {
-            this.$emit('closed');
+            this.$emit("closed");
         },
         saved() {
-            this.$emit('saved');
+            this.$emit("save");
         }
     }
 };

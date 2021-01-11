@@ -32,10 +32,10 @@ export default {
             return {
                 width: `${this.width}px`,
                 height: `${this.height}px`
-            }
+            };
         }
     }
-}
+};
 
 </script>
 

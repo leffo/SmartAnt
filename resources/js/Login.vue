@@ -62,7 +62,7 @@ export default {
             email: null,
             password: null,
             errors: []
-        }
+        };
     },
     methods: {
         async authenticate() {

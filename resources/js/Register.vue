@@ -90,7 +90,7 @@ export default {
 
                 if (user) {
                     this.$store.dispatch('setLoggedIn', true);
-                    this.$store.commit("setUser", user)
+                    this.$store.commit("setUser", user);
                     this.$router.push({name: "board"});
                 }
             } catch (err) {
@@ -98,7 +98,7 @@ export default {
             }
         }
     }
-}
+};
 </script>
 
 <style scoped>

@@ -52,9 +52,15 @@ import List from "./components/List";
 import ListAddEditor from "./components/ListAddEditor";
 import UserBoardsDropdown from "./components/UserBoardsDropdown";
 import BoardQuery from "./graphql/BoardWithListsAndCards.gql";
-import {EVENT_CARD_ADDED, EVENT_CARD_DELETED, EVENT_CARD_UPDATED, EVENT_LIST_ADDED} from "./constants";
+import Logout from "./graphql/Logout.gql";
+import {
+	EVENT_CARD_ADDED, 
+	EVENT_CARD_DELETED, 
+	EVENT_CARD_UPDATED, 
+	EVENT_LIST_ADDED
+} from "./constants";
 import { mapState } from "vuex";
-import Logout from "./graphql/Logout.gql"
+
 import {colorMap500} from "./utils";
 
 export default {
@@ -64,12 +70,12 @@ export default {
             return {
                 "bg-gray-500": this.$apollo.loading,
                 [colorMap500[this.board?.color]]: true
-            }
+            };
         },
         ...mapState({
                      isLoggedIn: "isLoggedIn",
-                     name: state => state.user.name,
-        }),
+                     name: state => state.user.name
+        })
     },
     apollo: {
         board: {
@@ -77,7 +83,7 @@ export default {
             variables() {
                 return {
                     id: Number(this.$route.params.id)
-                }
+                };
             }
         }
     },
@@ -98,7 +104,7 @@ export default {
             });
 
             const listById = () =>
-                data.board.lists.find(list => list.id == event.listId)
+                data.board.lists.find(list => list.id == event.listId);
 
             switch (event.type) {
                 case EVENT_LIST_ADDED:

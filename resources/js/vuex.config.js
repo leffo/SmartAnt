@@ -20,10 +20,10 @@ const store = {
         },
         setUser(state, payload) {
             state.user = payload;
-        },
+        }
     },
     actions: {
-        setLoggedIn({commit}, payload) {
+        async setLoggedIn({commit}, payload) {
             const isLoggedIn = Boolean(payload);
             localStorage.setItem("isLoggedIn", isLoggedIn);
             commit("setLoggedIn", isLoggedIn);

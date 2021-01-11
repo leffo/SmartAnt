@@ -24,7 +24,7 @@
                             v-for="(c, i) in row"
                             :key="i"
                             :color="c"
-                            :active-color="color"
+                            :activeColor="color"
                             @changed="color = $event"
                         ></BoardColor>
                     </div>
