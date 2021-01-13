@@ -6372,6 +6372,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -35272,58 +35286,83 @@ var render = function() {
             "div",
             {
               staticClass:
-                "group bg-white shadow-card rounded-sm p-2 cursor-pointer text-sm hover:bg-gray-100 mb-2 mx-2 flex justify-between"
+                "flex-col bg-white shadow-card rounded-sm p-2 cursor-pointer text-sm hover:bg-gray-50 mb-2 mx-1"
             },
             [
               _c("div", [_vm._v(_vm._s(_vm.card.title))]),
               _vm._v(" "),
-              _c("date-picker", {
-                staticClass: "absolute",
-                attrs: { range: "" },
-                model: {
-                  value: _vm.timeRange,
-                  callback: function($$v) {
-                    _vm.timeRange = $$v
-                  },
-                  expression: "timeRange"
-                }
-              }),
+              _c("div", { staticClass: "mb-0.5 text-xs text-gray-500 mt-2" }, [
+                _vm._v("Дата выполнения:")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "rounded-sm bg-red-400 outline-none text-gray-100 py-0.5 px-1 w-2/3"
+                },
+                [_vm._v("📅 2021-01-29 20-00")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "mt-3 mb-0 ml-1 text-xs text-gray-500" },
+                [_vm._v("Участники:")]
+              ),
+              _vm._v(" "),
+              _vm._m(0),
               _vm._v(" "),
               _vm.card.owner.id == _vm.userId
                 ? _c(
                     "div",
                     {
                       staticClass:
-                        "flex font-bold opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-500 text-2xl"
+                        "invisible hidden flex mt-2 items-center justify-end"
                     },
                     [
                       _c(
                         "div",
                         {
                           staticClass:
-                            "text-gray-400 pr-2 hover:text-yellow-700",
+                            "transform hover:scale-125 motion-reduce:transform-none hover:opacity-60 mr-2",
                           on: {
                             click: function($event) {
                               _vm.editing = true
                             }
                           }
                         },
-                        [_vm._v("✎")]
+                        [
+                          _c("img", {
+                            staticClass: "w-5 h-5 ",
+                            attrs: {
+                              src: __webpack_require__(/*! ../../images/pen32.png */ "./resources/images/pen32.png"),
+                              alt: "E"
+                            }
+                          })
+                        ]
                       ),
                       _vm._v(" "),
                       _c(
                         "div",
                         {
-                          staticClass: "text-gray-400 hover:text-red-700",
+                          staticClass:
+                            "transform hover:scale-125 motion-reduce:transform-none hover:opacity-60",
                           on: { click: _vm.cardDelete }
                         },
-                        [_vm._v("✗")]
+                        [
+                          _c("img", {
+                            staticClass: "w-5 h-5",
+                            attrs: {
+                              src: __webpack_require__(/*! ../../images/rec32.png */ "./resources/images/rec32.png"),
+                              alt: "D"
+                            }
+                          })
+                        ]
                       )
                     ]
                   )
                 : _vm._e()
-            ],
-            1
+            ]
           )
         : _c("CardEditor", {
             staticClass: "mb-2",
@@ -35346,7 +35385,47 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "relative h-16 my-0.5" }, [
+      _c("div", { staticClass: "absolute font-bold" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "flex rounded-full w-12 h-12 text-white bg-purple-400 hover:opacity-60 z-0 hover:z-50 text-lg justify-center items-center"
+          },
+          [_vm._v("AY")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "absolute ml-8 font-bold" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "flex rounded-full w-12 h-12 text-white bg-pink-400 hover:opacity-60 z-10 hover:z-50 text-lg justify-center items-center"
+          },
+          [_vm._v("WM")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "absolute ml-24 font-bold" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "flex rounded-full w-12 h-12 text-white bg-green-400 hover:opacity-60 z-20 hover:z-50 text-2xl justify-center items-center"
+          },
+          [_vm._v("＋")]
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -56963,6 +57042,28 @@ if (hasSymbols()) {
 /***/ (function(module, exports) {
 
 module.exports = "/images/Ant Emoji.png?5e5a08cf41a7ee356f313b2a62c68537";
+
+/***/ }),
+
+/***/ "./resources/images/pen32.png":
+/*!************************************!*\
+  !*** ./resources/images/pen32.png ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/pen32.png?00586d72377ba5f521e5320af117b31c";
+
+/***/ }),
+
+/***/ "./resources/images/rec32.png":
+/*!************************************!*\
+  !*** ./resources/images/rec32.png ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/rec32.png?3c47e62ace2acdc309d2ba443405522c";
 
 /***/ }),
 

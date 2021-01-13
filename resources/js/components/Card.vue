@@ -1,19 +1,33 @@
 <template>
     <div>
         <div v-if="!editing"
-            class="group bg-white shadow-card rounded-sm p-2 cursor-pointer text-sm hover:bg-gray-100 mb-2 mx-2 flex justify-between">
+             class="flex-col bg-white shadow-card rounded-sm p-2 cursor-pointer text-sm hover:bg-gray-50 mb-2 mx-1"
+        >
             <div>{{ card.title }}</div>
-            <date-picker
-                v-model="timeRange"
-                range
-                class="absolute"
-            ></date-picker>
-            <div
-                v-if="card.owner.id == userId"
-                class="flex font-bold opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-500 text-2xl"
-            >
-                <div class="text-gray-400 pr-2 hover:text-yellow-700" @click="editing=true">✎</div>
-                <div class="text-gray-400 hover:text-red-700" @click="cardDelete">✗</div>
+            <div class="mb-0.5 text-xs text-gray-500 mt-2">Дата выполнения:</div>
+            <div class="rounded-sm bg-red-400 outline-none text-gray-100 py-0.5 px-1 w-2/3">📅 2021-01-29 20-00</div>
+
+
+            <div class="mt-3 mb-0 ml-1 text-xs text-gray-500">Участники:</div>
+            <div class="relative h-16 my-0.5">
+                <div class="absolute font-bold">
+                    <div class="flex rounded-full w-12 h-12 text-white bg-purple-400 hover:opacity-60 z-0 hover:z-50 text-lg justify-center items-center">AY</div>
+                </div>
+                <div class="absolute ml-8 font-bold">
+                    <div class="flex rounded-full w-12 h-12 text-white bg-pink-400 hover:opacity-60 z-10 hover:z-50 text-lg justify-center items-center">WM</div>
+                </div>
+                <div class="absolute ml-24 font-bold">
+                    <div class="flex rounded-full w-12 h-12 text-white bg-green-400 hover:opacity-60 z-20 hover:z-50 text-2xl justify-center items-center">＋</div>
+                </div>
+            </div>
+
+            <div v-if="card.owner.id == userId" class="invisible hidden flex mt-2 items-center justify-end">
+                <div class="transform hover:scale-125 motion-reduce:transform-none hover:opacity-60 mr-2" @click="editing=true">
+                    <img src="../../images/pen32.png" alt="E" class="w-5 h-5 ">
+                </div>
+                <div class="transform hover:scale-125 motion-reduce:transform-none hover:opacity-60" @click="cardDelete">
+                    <img src="../../images/rec32.png" alt="D" class="w-5 h-5">
+                </div>
             </div>
         </div>
         <CardEditor
