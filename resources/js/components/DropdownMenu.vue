@@ -22,7 +22,7 @@ export default {
             this.$emit("closed");
         }
     }
-}
+};
 </script>
 
 <style scoped>

@@ -21,9 +21,6 @@ export default {
     computed: mapState({
         userId: state => state.user.id
     }),
-    // mounted() {
-    //     this.$refs.card.focus();
-    // },
     methods: {
         addCard() {
             const self = this;
@@ -42,7 +39,7 @@ export default {
             });
         },
         closed() {
-            this.$emit('closed');
+            this.$emit("closed");
         }
     }
 };

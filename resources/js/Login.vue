@@ -2,13 +2,22 @@
     <div class="bg-white sm:bg-gray-200 h-full flex justify-center">
         <div class="container mt-2 sm:mt-10 flex flex-col items-center">
             <div class="text-3xl text-blue-700 font-bold mb-10">
-                <span>SmartAnt</span>
+                <div class="flex">
+                    <img
+                        class="flex mr-3 items-center"
+                        src="../images/Ant Emoji.png"
+                        height="40"
+                        width="42"/>
+                    <div class="flex items-center">SmartAnt</div>
+                </div>
             </div>
 
             <div class="w-full sm:shadow-xl sm:bg-white sm:py-8 sm:px-12">
                 <Errors :errors="errors"></Errors>
 
-                <div class="w-full text-center text-gray-600 font-bold mb-8 ">Войти в SmartAnt</div>
+                <div class="w-full text-center text-gray-600 font-bold mb-8 ">
+                    Войти в SmartAnt
+                </div>
 
                 <form @submit.prevent="authenticate">
                     <div class="w-full mb-4">
@@ -62,7 +71,7 @@ export default {
             email: null,
             password: null,
             errors: []
-        }
+        };
     },
     methods: {
         async authenticate() {

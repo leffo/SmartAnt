@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="header-btn" @click="showBoards = !showBoards">Доски задач</button>
+        <button class="header-btn" @click.prevent="showBoards = !showBoards">Доски задач</button>
         <DropdownMenu :show="showBoards" @closed="showBoards = false">
             <div class="text-gray-600 text-xs font-semibold mb-2 ml-1">ДОСКИ ЗАДАЧ</div>
 
@@ -8,11 +8,11 @@
                 :to="{name: 'board', params: {id: board.id}}"
                 v-for="board in userBoards"
                 :key="board.id"
-                :class="[`bg-${board.color}-100`]"
+                :class="[colorMap100[board.color]]"
                 class="rounded-sm opacity-100 hover:opacity-75 text-gray-700 font-bold cursor-pointer flex mb-1"
                 @click.native="showBoards = false"
             >
-                <div class="w-10 rounded-sm rounded-r-none" :class="[`bg-${board.color}-200`]"></div>
+                <div class="w-10 rounded-sm rounded-r-none" :class="[colorMap200[board.color]]"></div>
                 <div class="p-2">{{ board.title }}</div>
             </router-link>
 
@@ -40,7 +40,7 @@ export default {
             query: UserBoards,
             variables() {
                 return {
-                    userId: 1
+                    userId: this.userId
                 };
             },
             skip() {
@@ -59,7 +59,7 @@ export default {
             userId: state => state.user.id
         }),
         colorMap100: () => colorMap100,
-        colorMap200: () => colorMap200,
+        colorMap200: () => colorMap200
     }
 };
 </script>

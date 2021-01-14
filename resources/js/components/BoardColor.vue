@@ -18,10 +18,7 @@ export default {
     },
     computed: {
         colors: () => colorMap500
-    },
-}
+    }
+    
+};
 </script>
-
-<style scoped>
-
-</style>
