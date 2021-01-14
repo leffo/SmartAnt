@@ -7015,7 +7015,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".header[data-v-36375f90] {\n  height: 45px;\n  background-color: rgba(0, 0, 0, 0.2);\n}\n", ""]);
+exports.push([module.i, ".header[data-v-36375f90] {\n  height: 45px;\n  background-color: rgba(0, 0, 0, 0.2);\n}\r\n", ""]);
 
 // exports
 
@@ -7034,7 +7034,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".container[data-v-43b1518a] {\n  width: 300px;\n  max-width: 300px;\n}\n@media (min-width: 640px) {\n.container[data-v-43b1518a] {\n    width: 400px;\n    max-width: 400px;\n}\n}\n", ""]);
+exports.push([module.i, ".container[data-v-43b1518a] {\n  width: 300px;\n  max-width: 300px;\n}\n@media (min-width: 640px) {\n.container[data-v-43b1518a] {\n    width: 400px;\n    max-width: 400px;\n}\n}\r\n", ""]);
 
 // exports
 
@@ -7053,7 +7053,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".container[data-v-027133c1] {\n  width: 300px;\n  max-width: 300px;\n}\n@media (min-width: 640px) {\n.container[data-v-027133c1] {\n    width: 400px;\n    max-width: 400px;\n}\n}\n", ""]);
+exports.push([module.i, ".container[data-v-027133c1] {\n  width: 300px;\n  max-width: 300px;\n}\n@media (min-width: 640px) {\n.container[data-v-027133c1] {\n    width: 400px;\n    max-width: 400px;\n}\n}\r\n", ""]);
 
 // exports
 
@@ -7072,7 +7072,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".title[data-v-22244392] {\n  background-color: hsla(0, 0%, 100%, 0);\n}\n.title[data-v-22244392]:hover,\n.title[data-v-22244392]:focus {\n  background-color: hsla(0, 0%, 100%, 0.2);\n}\n", ""]);
+exports.push([module.i, ".title[data-v-22244392] {\n  background-color: hsla(0, 0%, 100%, 0);\n}\n.title[data-v-22244392]:hover,\r\n.title[data-v-22244392]:focus {\n  background-color: hsla(0, 0%, 100%, 0.2);\n}\r\n", ""]);
 
 // exports
 
@@ -7091,7 +7091,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".dropdown-menu[data-v-f0206e0a] {\n  max-height: 80%;\n}\n", ""]);
+exports.push([module.i, ".dropdown-menu[data-v-f0206e0a] {\n  max-height: 80%;\n}\r\n", ""]);
 
 // exports
 
@@ -7129,7 +7129,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".overlay[data-v-53ab54d2] {\n  background-color: rgba(0, 0, 0, 0.7);\n}\n", ""]);
+exports.push([module.i, ".overlay[data-v-53ab54d2] {\n  background-color: rgba(0, 0, 0, 0.7);\n}\r\n", ""]);
 
 // exports
 
@@ -35649,7 +35649,7 @@ var render = function() {
               "list bg-white hover:bg-gray-500 rounded-sm p-2 mr-2 opacity-75 text-black cursor-pointer",
             on: { click: _vm.startEditing }
           },
-          [_vm._v("\n        ➕ Добавить лист...\n    ")]
+          [_vm._v("\r\n        ➕ Добавить лист...\r\n    ")]
         )
       : _c(
           "div",
@@ -58460,8 +58460,8 @@ var EVENT_LIST_ADDED = 'EVENT_LIST_ADDED';
 /***/ (function(module, exports) {
 
 
-    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CardAdd"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"listId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}},"directives":[]},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"title"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},"directives":[]},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"order"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},"directives":[]},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"ownerId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}},"directives":[]}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"cardAdd"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"title"},"value":{"kind":"Variable","name":{"kind":"Name","value":"title"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"list_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"listId"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"order"},"value":{"kind":"Variable","name":{"kind":"Name","value":"order"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"owner_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"ownerId"}}}]}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"order"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"owner"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]}]}}]}}]}}],"loc":{"start":0,"end":330}};
-    doc.loc.source = {"body":"mutation CardAdd($listId: ID!, $title: String!, $order: Int!, $ownerId: ID!) {\n    cardAdd(\n        input: {\n            title: $title,\n            list_id: $listId,\n            order: $order,\n            owner_id: $ownerId\n        }\n    ) {\n        id\n        title\n        order\n        owner {\n            id\n        }\n    }\n}\n","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CardAdd"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"listId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}},"directives":[]},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"title"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},"directives":[]},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"order"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},"directives":[]},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"ownerId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}},"directives":[]}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"cardAdd"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"title"},"value":{"kind":"Variable","name":{"kind":"Name","value":"title"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"list_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"listId"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"order"},"value":{"kind":"Variable","name":{"kind":"Name","value":"order"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"owner_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"ownerId"}}}]}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"order"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"owner"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]}]}}]}}]}}],"loc":{"start":0,"end":327}};
+    doc.loc.source = {"body":"mutation CardAdd($listId: ID!, $title: String!, $order: Int!, $ownerId: ID!) {\n    cardAdd(\n        input: {\n            title: $title\n            list_id: $listId\n            order: $order\n            owner_id: $ownerId\n        }\n    ) {\n        id\n        title\n        order\n        owner {\n            id\n        }\n    }\n}\n","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
   
 
     var names = {};
@@ -59945,8 +59945,8 @@ var store = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /data/smartant.lara/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /data/smartant.lara/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\OpenServer\domains\SmartAnt.lara\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\OpenServer\domains\SmartAnt.lara\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
