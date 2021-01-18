@@ -36,7 +36,7 @@ export default {
             this.$emit("closed");
         },
         saved() {
-            this.$emit("save");
+            this.$emit("saved");
         }
     }
 };
